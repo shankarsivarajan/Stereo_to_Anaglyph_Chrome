@@ -23,7 +23,7 @@
       "js": [ "content.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
    } ],
-   "description": "View stereoscopic 3D images on passive 3D monitors.",
+   "description": "Convert side-by-side stereo images to red–cyan anaglyphs.",
    "icons": {
       "128": "s3dviewer-128.png",
       "16": "s3dviewer-16.png",
