@@ -23,7 +23,7 @@
       "js": [ "content.js" ],
       "matches": [ "http://*/*", "https://*/*" ]
    } ],
-   "description": "Convert side-by-side stereo images to red–cyan anaglyphs.",
+   "description": "Convert side-by-side stereo images to red–cyan anaglyphs in situ.",
    "icons": {
       "128": "s3dviewer-128.png",
       "16": "s3dviewer-16.png",
