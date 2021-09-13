@@ -1,9 +1,19 @@
-function rc(info, tab) {
-  chrome.tabs.sendMessage(tab.id, "rc2ri");
+function rcd(info, tab) {
+  chrome.tabs.sendMessage(tab.id, "rcd2ri");
 }
 
-function cr(info, tab) {
-  chrome.tabs.sendMessage(tab.id, "cr2ri");
+
+function rchc(info, tab) {
+  chrome.tabs.sendMessage(tab.id, "rchc2ri");
+}
+
+
+function crd(info, tab) {
+  chrome.tabs.sendMessage(tab.id, "crd2ri");
+}
+
+function crhc(info, tab) {
+  chrome.tabs.sendMessage(tab.id, "crhc2ri");
 }
 
 function orig(info, tab) {
@@ -11,20 +21,39 @@ function orig(info, tab) {
 }
 
 chrome.contextMenus.create({
-  "title" : "Red–Cyan Anaglyph",
+  "title" : "Red–Cyan Dubois",
   "type" : "normal",
   "contexts" : ["all"],
   "onclick" : function(info, tab) {
-    chrome.tabs.sendMessage(tab.id, {"from": "rc", "to": "ri", "source": "menu"});
+    chrome.tabs.sendMessage(tab.id, {"from": "rcd", "to": "ri", "source": "menu"});
+  }
+});
+
+
+chrome.contextMenus.create({
+  "title" : "Red–Cyan Half-Color Optimized",
+  "type" : "normal",
+  "contexts" : ["all"],
+  "onclick" : function(info, tab) {
+    chrome.tabs.sendMessage(tab.id, {"from": "rchc", "to": "ri", "source": "menu"});
   }
 });
 
 chrome.contextMenus.create({
-  "title" : "Cyan–Red Anaglyph",
+  "title" : "Cyan–Red Dubois",
   "type" : "normal",
   "contexts" : ["all"],
   "onclick" : function(info, tab) {
-    chrome.tabs.sendMessage(tab.id, {"from": "cr", "to": "ri", "source": "menu"});
+    chrome.tabs.sendMessage(tab.id, {"from": "crd", "to": "ri", "source": "menu"});
+  }
+});
+
+chrome.contextMenus.create({
+  "title" : "Cyan–Red Half-Color Optimized",
+  "type" : "normal",
+  "contexts" : ["all"],
+  "onclick" : function(info, tab) {
+    chrome.tabs.sendMessage(tab.id, {"from": "crhc", "to": "ri", "source": "menu"});
   }
 });
 

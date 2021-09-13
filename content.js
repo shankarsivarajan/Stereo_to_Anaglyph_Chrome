@@ -11,7 +11,7 @@ document.addEventListener("mouseenter", function(event) {
   enteredTargetEleemnt = event.target;
 }, true);
 
-function optimizedAnaglyph(imageDataLeft, imageDataRight) {
+function halfColorAnaglyph(imageDataLeft, imageDataRight) {
   // clone the pixel array from original imageData
   const originalArrayLeft = imageDataLeft.data;
   const originalArrayRight = imageDataRight.data;
@@ -26,7 +26,23 @@ function optimizedAnaglyph(imageDataLeft, imageDataRight) {
   return new ImageData(newArray, imageDataLeft.width, imageDataLeft.height);
 }
 
-function rc2ri(cnv) {
+
+function duboisAnaglyph(imageDataLeft, imageDataRight) {
+  // clone the pixel array from original imageData
+  const originalArrayLeft = imageDataLeft.data;
+  const originalArrayRight = imageDataRight.data;
+  const newArray = new Uint8ClampedArray(originalArrayLeft);
+  for (let i = 0; i < originalArrayLeft.length; i += 4) {
+    newArray[i + 0] =  0.456*originalArrayLeft[i + 0] + 0.500*originalArrayLeft[i + 1] + 0.176* originalArrayLeft[i + 2] + (-0.043)*originalArrayRight[i + 0] + (-0.088)*originalArrayRight[i + 1] + (-0.002)* originalArrayRight[i + 2]; // red 🔴
+    newArray[i + 1] = (-0.040)*originalArrayLeft[i + 0] + (-0.038)*originalArrayLeft[i + 1] + (-0.016)* originalArrayLeft[i + 2] + 0.378*originalArrayRight[i + 0] + 0.734*originalArrayRight[i + 1] + (-0.018)* originalArrayRight[i + 2];  // green 🟢
+    newArray[i + 2] = (-0.015)*originalArrayLeft[i + 0] + (-0.021)*originalArrayLeft[i + 1] + (-0.005)* originalArrayLeft[i + 2] + (-0.072)*originalArrayRight[i + 0] + (-0.113)*originalArrayRight[i + 1] + (1.226)*originalArrayRight[i + 2];;// blue 🔵
+	newArray[i + 3] = 0.5*originalArrayLeft[i + 3] + 0.5*originalArrayRight[i + 3] ;// alpha
+  }
+  // return a new ImageData object
+  return new ImageData(newArray, imageDataLeft.width, imageDataLeft.height);
+}
+
+function rcd2ri(cnv) {
     var img = cnv.original3DImage;
     var ctx = cnv.getContext("2d");
 	
@@ -35,13 +51,28 @@ function rc2ri(cnv) {
 	const imageDataRight = ctx.getImageData(0, 0, cnv.width/2, cnv.height);	
 	const imageDataLeft = ctx.getImageData(cnv.width/2, 0, cnv.width/2, cnv.height);
 	
-	const updatedImageData = optimizedAnaglyph(imageDataLeft, imageDataRight);
+	const updatedImageData = duboisAnaglyph(imageDataLeft, imageDataRight);
+	ctx.clearRect(0, 0, cnv.width, cnv.height);
+	
+	ctx.putImageData(updatedImageData, cnv.width /4, 0, 0, 0, cnv.width /2, cnv.height) 
+	}
+	
+function rchc2ri(cnv) {
+    var img = cnv.original3DImage;
+    var ctx = cnv.getContext("2d");
+	
+	ctx.drawImage(img, 0, 0, cnv.width, cnv.height);
+	
+	const imageDataRight = ctx.getImageData(0, 0, cnv.width/2, cnv.height);	
+	const imageDataLeft = ctx.getImageData(cnv.width/2, 0, cnv.width/2, cnv.height);
+	
+	const updatedImageData = halfColorAnaglyph(imageDataLeft, imageDataRight);
 	ctx.clearRect(0, 0, cnv.width, cnv.height);
 	
 	ctx.putImageData(updatedImageData, cnv.width /4, 0, 0, 0, cnv.width /2, cnv.height) 
 	}
 
-function cr2ri(cnv) {
+function crd2ri(cnv) {
     var img = cnv.original3DImage;
     var ctx = cnv.getContext("2d");
 	
@@ -50,7 +81,23 @@ function cr2ri(cnv) {
 	const imageDataLeft = ctx.getImageData(0, 0, cnv.width/2, cnv.height);	
 	const imageDataRight = ctx.getImageData(cnv.width/2, 0, cnv.width/2, cnv.height);
 	
-	const updatedImageData = optimizedAnaglyph(imageDataLeft, imageDataRight);
+	const updatedImageData = duboisAnaglyph(imageDataLeft, imageDataRight);
+	
+	ctx.clearRect(0, 0, cnv.width, cnv.height);
+	
+	ctx.putImageData(updatedImageData, cnv.width /4, 0, 0, 0, cnv.width /2, cnv.height) 
+	}
+	
+function crhc2ri(cnv) {
+    var img = cnv.original3DImage;
+    var ctx = cnv.getContext("2d");
+	
+	ctx.drawImage(img, 0, 0, cnv.width, cnv.height);
+	
+	const imageDataLeft = ctx.getImageData(0, 0, cnv.width/2, cnv.height);	
+	const imageDataRight = ctx.getImageData(cnv.width/2, 0, cnv.width/2, cnv.height);
+	
+	const updatedImageData = halfColorAnaglyph(imageDataLeft, imageDataRight);
 	
 	ctx.clearRect(0, 0, cnv.width, cnv.height);
 	
@@ -65,12 +112,18 @@ function refresh3DView() {
     var cnv = eles[i];
     if (cnv.hasOwnProperty("convert3DType")) {
       switch (cnv.convert3DType) {
-      case "rc2ri":
-        rc2ri(cnv);
-        break;
-      case "cr2ri":
-        cr2ri(cnv);
-        break;
+		  case "rcd2ri":
+			rcd2ri(cnv);
+			break;
+		case "rchc2ri":
+			rchc2ri(cnv);
+			break;
+		case "crd2ri":
+			crd2ri(cnv);
+			break;
+		case "crhc2ri":
+			crhc2ri(cnv);
+			break;
       }
     }
   }
