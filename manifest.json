@@ -1,6 +1,6 @@
 {
    "background": {
-      "scripts": [ "background.js" ]
+      "service_worker": "background.js"
    },
    "commands": {
       "orig": {
@@ -34,13 +34,16 @@
    } ],
    "description": "Convert side-by-side stereo images to red–cyan anaglyphs in situ.",
    "icons": {
-      "128": "s3dviewer-128.png",
-      "16": "s3dviewer-16.png",
-      "48": "s3dviewer-48.png"
+      "128": "anaglyph128.png",
+      "16": "anaglyph16.png",
+      "48": "anaglyph48.png"
    },
-   "manifest_version": 2,
+   "manifest_version": 3,
    "minimum_chrome_version": "25.0.0.0",
    "name": "Stereo to Anaglyph",
-   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
-   "version": "0.3"
+   "permissions": [ "contextMenus", "tabs"],
+   "host_permissions": [
+     "http://*/*", "https://*/*" 
+],
+   "version": "0.4"
 }

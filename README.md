@@ -6,6 +6,6 @@ This extension is based on [Stereoscopic 3D Viewer](https://chrome.google.com/we
 
 - Open the stereo image in a new tab. This is to avoid the "canvas has been tainted by cross-origin data" error.
 
-- In the context menu, select `Stereo to Anaglyph` > `Red–Cyan Dubois`. The default shortcut is `Alt + 2`. If the images are swapped, select `Cyan–Red Dubois` instead.
+- In the context menu, select `Stereo to Anaglyph` > `Red–Cyan Dubois`. If the images are swapped, select `Cyan–Red Dubois` instead.
 
-- To revert to the original image, select  `Stereo to Anaglyph` > `Original`. The default shortcut is `Alt + 1`.
+- To revert to the original image, select  `Stereo to Anaglyph` > `Original`.
