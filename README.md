@@ -9,3 +9,13 @@ This extension is based on [Stereoscopic 3D Viewer](https://chrome.google.com/we
 - In the context menu, select `Stereo to Anaglyph` > `Red–Cyan Dubois`. If the images are swapped, select `Cyan–Red Dubois` instead.
 
 - To revert to the original image, select  `Stereo to Anaglyph` > `Original`.
+ 
+## Demonstration:
+
+Side-by-side ([Creature Factory 2 by Andy Goralczyk](https://docs.blender.org/manual/en/latest/render/output/properties/stereoscopy/usage.html)): 
+
+![stereoscopy_sidebyside](https://github.com/shankarsivarajan/Stereo_to_Anaglyph_Chrome/assets/16606427/6274882e-90c4-4a0d-b270-ad9a7b9252ed)
+
+Red–Cyan Dubois Anaglyph: 
+
+![red_cyan_dubois_anaglyph](https://github.com/shankarsivarajan/Stereo_to_Anaglyph_Chrome/assets/16606427/67240f62-7bc3-4d6c-a560-dc3777d5cf7f)
