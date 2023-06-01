@@ -1,4 +1,4 @@
- # Stereo to Anaglyph 
+ # <img src="anaglyph48.png" align="left"> Stereo to Anaglyph 
 
 Convert side-by-side stereo images to red–cyan anaglyphs.
 
