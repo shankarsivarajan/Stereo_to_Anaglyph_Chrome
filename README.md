@@ -10,7 +10,7 @@ This extension is based on [Stereoscopic 3D Viewer](https://chrome.google.com/we
 
 - To revert to the original image, select  `Stereo to Anaglyph` > `Original`.
  
-## Demonstration:
+## Demonstration
 
 Side-by-side ([Creature Factory 2 by Andy Goralczyk](https://docs.blender.org/manual/en/latest/render/output/properties/stereoscopy/usage.html)): 
 
@@ -19,3 +19,12 @@ Side-by-side ([Creature Factory 2 by Andy Goralczyk](https://docs.blender.org/ma
 Red–Cyan Dubois Anaglyph: 
 
 ![red_cyan_dubois_anaglyph](https://github.com/shankarsivarajan/Stereo_to_Anaglyph_Chrome/assets/16606427/67240f62-7bc3-4d6c-a560-dc3777d5cf7f)
+
+## Installation
+
+- Download this repository and unzip the folder.
+- Navigate to ``chrome://extensions``.
+- Activate ``Developer mode``.
+- Click on ``Load unpacked``.
+- Select the unzipped directory.
+- Enable the extension.
