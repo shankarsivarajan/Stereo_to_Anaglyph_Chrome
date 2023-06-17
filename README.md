@@ -22,7 +22,7 @@ Red–Cyan Dubois Anaglyph:
 
 ## Installation
 
-- Download this repository and unzip the folder.
+- Download the file `Stereo_to_Anaglyph.zip` and unzip.
 - Navigate to ``chrome://extensions``.
 - Activate ``Developer mode``.
 - Click on ``Load unpacked``.
