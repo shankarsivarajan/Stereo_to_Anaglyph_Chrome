@@ -34,9 +34,9 @@
    } ],
    "description": "Convert side-by-side stereo images to red–cyan anaglyphs in situ.",
    "icons": {
-      "128": "anaglyph128.png",
-      "16": "anaglyph16.png",
-      "48": "anaglyph48.png"
+      "128": "./icons/anaglyph128.png",
+      "16": "./icons/anaglyph16.png",
+      "48": "./icons/anaglyph48.png"
    },
    "manifest_version": 3,
    "minimum_chrome_version": "25.0.0.0",
@@ -45,5 +45,5 @@
    "host_permissions": [
      "http://*/*", "https://*/*" 
 ],
-   "version": "0.4"
+   "version": "0.5"
 }
