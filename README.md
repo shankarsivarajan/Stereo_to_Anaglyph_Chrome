@@ -1,4 +1,4 @@
- # <img src="anaglyph48.png" align="left"> Stereo to Anaglyph 
+ # <img src="icons/anaglyph128.png" width = 64 align = "center" > Stereo to Anaglyph 
 
 Convert side-by-side stereo images to red–cyan anaglyphs.
 
